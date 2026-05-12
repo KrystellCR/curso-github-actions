@@ -1,0 +1,19 @@
+name: hola-mundo
+
+on: [push]
+
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Ejecutar main.py
+        run: python main.py
