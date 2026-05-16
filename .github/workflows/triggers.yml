@@ -4,7 +4,7 @@ name: workflow_triggers
 on:
   push:
     branches:
-      - curso-github-actions
+      - aprendiendo-github-actions
 
   pull_request:
     branches:
@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Push message
-        run: echo "Creaste un push a curso-github-actions"
+        run: echo "Creaste un push a aprendiendo-github-actions"
 
   trigger-pr:
     runs-on: ubuntu-latest
