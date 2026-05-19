@@ -15,6 +15,7 @@ on:
 
 jobs:
 
+  # Job para push
   trigger-push:
     runs-on: ubuntu-latest
 
@@ -22,6 +23,7 @@ jobs:
       - name: Push message
         run: echo "Creaste un push a aprendiendo-github-actions"
 
+  #Job para pr
   trigger-pr:
     runs-on: ubuntu-latest
 
@@ -29,6 +31,7 @@ jobs:
       - name: PR message
         run: echo "Creaste un PR a main"
 
+  #Job para corn 
   trigger-cron:
     runs-on: ubuntu-latest
 

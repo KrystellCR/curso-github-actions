@@ -1,0 +1,35 @@
+name: expresiones
+
+run-name: workflow-expresiones
+
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: 'Juan'
+        type: string
+
+jobs:
+  push-job:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+       runs-on: ubuntu-latest
+       steps:
+        -name: printConsola
+        run: echo "creates un push"
+
+  manual:
+
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mensaje
+
+        run: echo "${{ contains(inputs.nombre, 'cri') }}"
