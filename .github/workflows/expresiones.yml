@@ -16,12 +16,16 @@ on:
         type: string
 
 jobs:
+
   push-job:
+
     if: ${{ github.event_name != 'workflow_dispatch' }}
-       runs-on: ubuntu-latest
-       steps:
-        -name: printConsola
-        run: echo "creates un push"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: printConsola
+        run: echo "Creaste un push"
 
   manual:
 
@@ -31,5 +35,4 @@ jobs:
 
     steps:
       - name: Mensaje
-
         run: echo "${{ contains(inputs.nombre, 'cri') }}"
