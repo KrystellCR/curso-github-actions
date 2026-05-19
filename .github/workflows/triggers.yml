@@ -1,0 +1,40 @@
+name: workflow_triggers
+
+#Eventos push/pr/schechudele 
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+  pull_request:
+    branches:
+      - main
+
+  schedule:
+    - cron: '0 8 15 * *'
+
+jobs:
+
+  # Job para push
+  trigger-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Push message
+        run: echo "Creaste un push a aprendiendo-github-actions"
+
+  #Job para pr
+  trigger-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: PR message
+        run: echo "Creaste un PR a main"
+
+  #Job para corn 
+  trigger-cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cron message
+        run: echo "Hoy es quincena"
