@@ -1,0 +1,32 @@
+# Nombre del workflow
+name: contextos
+
+# Nombre visible de cada ejecución
+run-name: workflow-contextos
+
+# Evento que dispara el workflow
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+# Jobs del workflow
+jobs:
+
+  # Job 1: push normal
+  push-job:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: printConsola
+        run: echo "Hola ${{ github.actor }}"
+
+  # Job 2: información del runner
+  inf-job:
+
+    runs-on: windows-latest
+
+    steps:
+      - name: printInfRunner
+        run: echo "El sistema operativo es ${{ runner.os }}"

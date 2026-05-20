@@ -1,38 +1,77 @@
+# Nombre del workflow
+# Así aparecerá en la pestaña Actions
 name: expresiones
 
+# Nombre visible de cada ejecución
 run-name: workflow-expresiones
 
+# Eventos que disparan el workflow
 on:
+
+  # Se ejecuta cuando haces push
+  # únicamente en esta rama
   push:
     branches:
       - aprendiendo-github-actions
 
+  # Permite ejecutar el workflow manualmente
   workflow_dispatch:
+
+    # Inputs que el usuario puede escribir
     inputs:
+
+      # Nombre del input
       nombre:
+
+        # Texto descriptivo en GitHub
         description: 'Tu nombre'
+
+        # El campo es obligatorio
         required: true
+
+        # Valor por defecto
         default: 'Juan'
+
+        # Tipo de dato
         type: string
 
+# Jobs que ejecutará el workflow
 jobs:
 
+  # Job para pushes normales
   push-job:
 
+    # Condición:
+    # solo ejecutar si NO fue manual
     if: ${{ github.event_name != 'workflow_dispatch' }}
 
+    # Sistema operativo del runner
     runs-on: ubuntu-latest
 
+    # Pasos del job
     steps:
+
+      # Step que imprime mensaje
       - name: printConsola
+
+        # Comando Linux real
         run: echo "Creaste un push"
 
+  # Job manual
   manual:
 
+    # Solo se ejecuta si el evento fue workflow_dispatch
     if: ${{ github.event_name == 'workflow_dispatch' }}
 
+    # Runner Ubuntu
     runs-on: ubuntu-latest
 
+    # Steps del job
     steps:
+
+      # Step que valida texto
       - name: Mensaje
+
+        # contains revisa si el input contiene 'cri'
+        # devolverá true o false
         run: echo "${{ contains(inputs.nombre, 'cri') }}"
