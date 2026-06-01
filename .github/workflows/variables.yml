@@ -19,5 +19,5 @@ jobs:
     steps:
       - name: Mostrar variables
         run: |
-          echo "Variable env: $VARIABLE_TEST"
+          echo "Variable env: {{ $VARIABLE_TEST }}"
           echo "Variable GitHub: ${{ vars.nombre }}"
