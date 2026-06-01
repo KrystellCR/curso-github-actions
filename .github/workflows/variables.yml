@@ -1,0 +1,23 @@
+name: variables
+
+run-name: workflow-variables
+
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+jobs:
+
+  push-job:
+
+    runs-on: ubuntu-latest
+
+    env:
+      VARIABLE_TEST: TEST
+
+    steps:
+      - name: Mostrar variables
+        run: |
+          echo "Variable env: $VARIABLE_TEST"
+          echo "Variable GitHub: ${{ vars.nombre }}"
